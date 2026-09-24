@@ -1,26 +1,16 @@
-# Inaba — 食事AIアドバイザー
+const fileInput = document.getElementById('photoInput');
+const mealPreview = document.getElementById('mealPreview');
 
-食事の写真を撮るだけで、食事のバランスと次の一歩を確認できるモバイルファーストなWebアプリです。
+fileInput.addEventListener('change', (event) => {
+  const file = event.target.files?.[0];
+  if (!file || !file.type.startsWith('image/')) return;
 
-## Features
-
-- スマートフォンのカメラまたは端末内の画像を選択
-- 撮影した写真のプレビュー
-- AI解析を待っている状態を表現するローディング体験
-- バランススコア、栄養素、AIからのアドバイスを表示
-- 写真を解析し直す操作に対応
-- レスポンシブ対応・日本語UI
-
-## Run locally
-
-静的ファイルなので、`index.html` をブラウザで開くだけで動作します。カメラ入力を利用する場合は、HTTPSまたはlocalhostで配信してください。
-
-```bash
-python3 -m http.server 8000
-```
-
-その後、`http://localhost:8000` を開きます。
-
-## Production AI integration
-
-現在の解析結果はデモ用のレスポンスです。実際のAIを接続する場合は `app.js` の解析処理を画像アップロードAPIに置き換え、APIキーはブラウザに置かずサーバー側で管理してください。AIの推定値は医療診断ではなく、食物アレルギーや健康上の判断には専門家へ相談してください。
+  const reader = new FileReader();
+  reader.onload = () => {
+    mealPreview.style.backgroundImage = `url(${reader.result})`;
+    mealPreview.style.backgroundSize = 'cover';
+    mealPreview.style.backgroundPosition = 'center';
+    mealPreview.style.filter = 'saturate(1.1) contrast(1.05)';
+  };
+  reader.readAsDataURL(file);
+});
