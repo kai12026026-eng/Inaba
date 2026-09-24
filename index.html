@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f7f8f4" />
+  <title>Inaba | 食事AIアドバイザー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">稲</span><span>INABA</span></div>
+      <button class="icon-button" id="historyButton" aria-label="記録を見る">◷</button>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">YOUR DAILY FOOD COACH</p>
+      <h1>今日の食事を、<br /><em>味方</em>にしよう。</h1>
+      <p class="hero-copy">写真を撮るだけで、AIが食事のバランスを見える化。無理なく続く、ひとことアドバイスを届けます。</p>
+    </section>
+
+    <section class="capture-card" aria-labelledby="capture-title">
+      <div class="section-heading">
+        <div><span class="step">01</span><h2 id="capture-title">食事を撮影</h2></div>
+        <span class="today">TODAY</span>
+      </div>
+      <div class="drop-zone" id="dropZone">
+        <input type="file" id="photoInput" accept="image/*" capture="environment" aria-label="食事の写真を選択" />
+        <div class="preview" id="preview"><div class="camera-icon">⌾</div><strong>写真を追加</strong><span>タップして撮影・選択</span></div>
+      </div>
+      <button class="primary-button" id="analyzeButton" disabled><span>AIで解析する</span><span>→</span></button>
+      <p class="privacy-note">🔒 写真はあなたの端末内で安全に扱われます</p>
+    </section>
+
+    <section class="result-section hidden" id="resultSection" aria-live="polite">
+      <div class="section-heading result-heading"><div><span class="step">02</span><h2>解析レポート</h2></div><span class="ai-badge">AI ANALYSIS</span></div>
+      <div class="dish-summary"><div><span class="dish-label">今回の食事</span><h3 id="dishName">彩り野菜のチキンプレート</h3><p id="dishDescription">主食・主菜・副菜がそろった、バランスの良い一皿です。</p></div><span class="score" id="score">82<small> / 100</small></span></div>
+      <div class="nutrition-grid">
+        <div class="nutrition-card"><span class="nutrition-icon orange">◒</span><strong>たんぱく質</strong><b>24g</b><div class="meter"><i style="width:78%"></i></div></div>
+        <div class="nutrition-card"><span class="nutrition-icon green">◌</span><strong>野菜</strong><b>◎</b><div class="meter"><i style="width:88%"></i></div></div>
+        <div class="nutrition-card"><span class="nutrition-icon yellow">◇</span><strong>炭水化物</strong><b>適量</b><div class="meter"><i style="width:65%"></i></div></div>
+      </div>
+      <div class="advice-card"><div class="advice-title"><span>✦</span><strong>AIからのひとこと</strong></div><p id="advice">とても良いバランスです！次の食事では、汁物や果物をプラスすると、さらに満足度と栄養バランスがアップします。</p><div class="tip"><span>TIP</span><span>ゆっくり噛んで、食事を楽しみましょう</span></div></div>
+      <button class="secondary-button" id="newPhotoButton">別の写真を解析する</button>
+    </section>
+
+    <footer><span>INABA</span><span>食べるを、もっと自分らしく。</span></footer>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
