@@ -1,0 +1,22 @@
+{
+  "expo": {
+    "name": "Inaba",
+    "slug": "inaba-ai-food-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "backgroundColor": "#59D4C0"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.inaba.foodapp"
+    },
+    "android": {
+      "package": "com.inaba.foodapp"
+    }
+  }
+}
